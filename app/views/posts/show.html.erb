@@ -3,5 +3,5 @@
 <%=link_to Blogger.all.find_by_id(@post.blogger).name, blogger_path(@post.blogger.id)%> <br>
 <%=link_to Destination.all.find_by_id(@post.destination).name, destination_path(@post.destination.id)%>
 <br>
-<label>Likes: <%= @post.likes %><label>
+<label>❤️: <%= @post.likes %><label>
 <%= button_to "Like", like_path(@post) %>
