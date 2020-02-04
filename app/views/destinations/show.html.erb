@@ -1,0 +1,21 @@
+<h1> <% @destination.name %> </h1>
+
+<% sorted_arr =  @destination.posts.sort_by &:created_at %>
+
+<% sorted_arr.reverse.slice(0..4).each do |post|%>
+<%= link_to post.title, post_path(post.id) %>
+<br>
+<% end %>
+
+<% likes_arr = [] %>
+<% @destination.posts.each do |post| %>
+    <% likes_arr.push(post.likes) %>
+<% end %>
+
+<% max_likes_post =  @destination.posts.max_by do |post| %>
+    <% post.likes %>
+<% end %>
+<br>
+<label> Featured Post: <%= link_to max_likes_post.title, post_path(max_likes_post.id) %>  </label>
+<br>
+<label> Average Age of bloggers who post about us: <%= @destination.destinations_uniq_bloggers_age_average %> <label>

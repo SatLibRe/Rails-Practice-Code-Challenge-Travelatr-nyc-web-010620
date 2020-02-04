@@ -1,0 +1,18 @@
+<h1> Create a Post </h1>
+
+<% if flash[:message] %>
+<h4 style= "color: red;"> <%= @post.errors.full_messages[0] %></h4>
+<% end %>
+
+
+<%= form_for @post do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.label :content%>
+    <%= f.text_field :content %>
+    <%= f.label :likes %>
+    <%= f.number_field :likes %>
+    <%= f.collection_select :blogger_id, Blogger.all, :id, :name %>
+    <%= f.collection_select :destination_id, Destination.all, :id, :name %>
+    <%= f.submit "Create Post" %>
+<% end %>
